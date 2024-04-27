@@ -1,8 +1,10 @@
+"use client"
+
 import React from 'react'
 
 function CreateOrder() {
   return (
-    <div>CreateOrder</div>
+    <h1>CreateOrder</h1>
   )
 }
 

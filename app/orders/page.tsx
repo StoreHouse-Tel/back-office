@@ -1,5 +1,8 @@
+
+
 import Link from 'next/link'
 import React from 'react'
+import OrderLists from '@/components/OrderLists'
 
 function Orders() {
   return (
@@ -9,7 +12,10 @@ function Orders() {
         </div>
         <p>Orders</p>
         <div>
-       
+        <OrderLists />
+        <OrderLists />
+        <OrderLists />
+        <OrderLists />
         </div>
     </div>
    
