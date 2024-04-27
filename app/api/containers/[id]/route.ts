@@ -9,9 +9,9 @@ interface RouteParams {
 
   export async function PUT(req: Request, { params }: { params: RouteParams }) {
     const { id } = params;
-    const {newUnit: unit,newMaxCopacity: maxCapacity,newQuantity: quantity,newThreshold: threshold } = await req.json();
+    const {unit, maxCapacity, quantity, threshold } = await req.json();
     await connectDB();
-    const updateContainer = await Container.findByIdAndUpdate(id, { unit, maxCapacity, quantity, threshold });
+    const updateContainer = await Container.findByIdAndUpdate(id, { unit, maxCapacity, quantity, threshold },{ new: true });
     
     if (!updateContainer) {
         return NextResponse.json({ error: "Container not found" }, { status: 404 });

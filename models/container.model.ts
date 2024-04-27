@@ -34,6 +34,6 @@ const containerSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Container = mongoose.model('container', containerSchema);
+const Container = mongoose.models.container || mongoose.model('container', containerSchema);
 
 export default Container;

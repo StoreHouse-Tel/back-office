@@ -32,3 +32,14 @@ export async function DELETE(req: Request) {
     await Container.deleteOne({ name });
     return NextResponse.json({ message: "Container deleted successfully" }, { status: 200 });
 }
+
+// export async function PUT(req: Request) {
+//     const { name, unit, maxCapacity, quantity, threshold } = await req.json();
+//     await connectDB();
+//     const updatedContainer = await Container.findOneAndUpdate(
+//         { name },
+//         { unit, maxCapacity, quantity, threshold },
+//         { new: true } // Return the updated document
+//     );
+//     return NextResponse.json({ updatedContainer }, { status: 200 });
+// }
