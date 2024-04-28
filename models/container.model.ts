@@ -1,12 +1,20 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Model } from 'mongoose';
 
-const containerSchema = new mongoose.Schema(
+export interface IContainer extends Document {
+  name: string;
+  unit: string;
+  maxCapacity: number;
+  quantity: number;
+  threshold: number;
+  populatorCurrentPercentage: number;
+}
+
+const containerSchema = new mongoose.Schema<IContainer>(
   {
     name: {
       type: String,
       required: true,
       unique: true,
-      
     },
     unit: {
       type: String,
@@ -20,20 +28,19 @@ const containerSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    threshold : {
+    threshold: {
       type: Number,
       required: true,
     },
-    populatorCurrentPercentage : {
+    populatorCurrentPercentage: {
       type: Number,
-      default: 0
+      default: 0,
     },
-    
-    
   },
   { timestamps: true }
 );
 
-const Container = mongoose.models.container || mongoose.model('container', containerSchema);
+const Container: Model<IContainer> =
+  mongoose.models.container || mongoose.model<IContainer>('container', containerSchema);
 
 export default Container;

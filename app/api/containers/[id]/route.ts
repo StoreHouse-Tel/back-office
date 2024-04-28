@@ -19,3 +19,15 @@ interface RouteParams {
 
     return NextResponse.json({ updateContainer }, { status: 200 });
 }
+
+export async function GET(req: Request, { params }: { params: RouteParams }) {
+    const { id } = params;
+    await connectDB();
+    const getContainer = await Container.findById(id);
+    if (!getContainer) {
+        return NextResponse.json({ error: "Container not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ getContainer }, { status: 200 });
+}
+    

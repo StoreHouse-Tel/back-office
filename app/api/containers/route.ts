@@ -1,5 +1,6 @@
 import connectDB from "@/libs/mongodb";
-import Container from "@/models/container.model";
+import Container, { IContainer } from "@/models/container.model";
+import { Model } from "mongoose";
 import { NextResponse } from "next/server";
 import { URLSearchParams } from "url";
 
@@ -18,11 +19,14 @@ export async function POST(req : Request,) {
     return NextResponse.json({ newContainer }, { status: 201 });
 }
 
-export async function GET() {
+
+
+export async function GET(): Promise<NextResponse> {
     await connectDB();
-    const getContainers = await Container.find();
-    return NextResponse.json({ getContainers }, { status: 200 });
+    const getContainers: Model<IContainer>[] = await Container.find();
+    return NextResponse.json<Array<typeof Container>>(getContainers, { status: 200 });
 }
+
 
 export async function DELETE(req: Request) {
 
