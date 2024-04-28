@@ -39,15 +39,16 @@ async function ContainerList() {
         {containers && containers.map((container: Container) => (
             <div key={container._id} className='p-4 border border-pink-800 rounded-lg my-3 flex justify-between gap-5'>
                 <div>
-                    <h2>{container.name}</h2>
-                    <p>{container.unit}</p>
-                    <p>{container.quantity}</p>
-                    <p>{container.threshold}</p>
-                    <p>{container.populatorCurrentPercentage}</p>
+                    <h2>Name: <span className='text-pink-500 font-bold'>{container.name} </span></h2>
+                    <p>Unit: <span className='text-pink-500 font-bold'>{container.unit} </span></p>
+                    <p>Max Capacity: <span className='text-pink-500 font-bold'>{container.maxCapacity}</span></p>
+                    <p>Current Quantity:<span className='text-pink-500 bold font-bold'>{container.quantity}</span> </p>
+                    <p>Threshold Alert: <span className='text-pink-500 font-bold'>{container.threshold}</span></p>
+                    <p>Current Threshold:<span className='text-pink-500 font-bold'>{container.populatorCurrentPercentage}</span></p>
                 </div>
                 <div className='flex space-x-2'>
-                    <RemoveBtn />
-                    <Link className='bg-green-500 text-white p-2 rounded-lg' href={`/orders/editOrder/${container._id}`}>
+                    <RemoveBtn name={container.name}/>
+                    <Link className='bg-green-500 text-white p-2 rounded-lg' href={`/containers/editContainer/${container._id}`}>
                         <HiPencilAlt className='flex items-center justify-center bg-center' size={24}/>
                     </Link>
                 </div>
