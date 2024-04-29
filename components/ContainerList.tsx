@@ -29,7 +29,7 @@ type Container = {
     populatorCurrentPercentage: number
 }
 
-async function ContainerList() {
+async function ContainerList(): Promise<JSX.Element> {
 
     const  containers : Container[] = await getContainers();
     console.log(containers)
@@ -42,9 +42,9 @@ async function ContainerList() {
                     <h2>Name: <span className='text-pink-500 font-bold'>{container.name} </span></h2>
                     <p>Unit: <span className='text-pink-500 font-bold'>{container.unit} </span></p>
                     <p>Max Capacity: <span className='text-pink-500 font-bold'>{container.maxCapacity}</span></p>
-                    <p>Current Quantity:<span className='text-pink-500 bold font-bold'>{container.quantity}</span> </p>
-                    <p>Threshold Alert: <span className='text-pink-500 font-bold'>{container.threshold}</span></p>
-                    <p>Current Threshold:<span className='text-pink-500 font-bold'>{container.populatorCurrentPercentage}</span></p>
+                    <p>Current Quantity: <span className='text-pink-500 bold font-bold'>{container.quantity}</span> </p>
+                    <p>Threshold Alert: <span className='text-pink-500 font-bold'>{container.threshold} %</span></p>
+                    <p>Current Threshold: <span className='text-pink-500 font-bold'>{container.populatorCurrentPercentage} %</span></p>
                 </div>
                 <div className='flex space-x-2'>
                     <RemoveBtn name={container.name}/>
