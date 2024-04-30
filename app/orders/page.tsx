@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import React from 'react'
-import OrderLists from '@/components/OrderLists'
+
+import OrderList from '@/components/OrderList'
 
 function Orders() {
   return (
@@ -10,12 +11,10 @@ function Orders() {
         <div>
             <Link href="/orders/createOrder" className='text-white font-bold uppercase bg-green-500 rounded-lg p-2'>Create Order</Link>
         </div>
-        <p>Orders</p>
+        
         <div>
-        <OrderLists />
-        <OrderLists />
-        <OrderLists />
-        <OrderLists />
+        <OrderList />
+        
         </div>
     </div>
    
